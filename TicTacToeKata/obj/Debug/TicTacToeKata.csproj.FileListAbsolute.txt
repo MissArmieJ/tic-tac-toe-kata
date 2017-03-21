@@ -1,0 +1,5 @@
+C:\GitHub\katas\tic-tac-toe-kata\TicTacToeKata\bin\Debug\TicTacToeKata.dll
+C:\GitHub\katas\tic-tac-toe-kata\TicTacToeKata\bin\Debug\TicTacToeKata.pdb
+C:\GitHub\katas\tic-tac-toe-kata\TicTacToeKata\obj\Debug\TicTacToeKata.csprojResolveAssemblyReference.cache
+C:\GitHub\katas\tic-tac-toe-kata\TicTacToeKata\obj\Debug\TicTacToeKata.dll
+C:\GitHub\katas\tic-tac-toe-kata\TicTacToeKata\obj\Debug\TicTacToeKata.pdb
