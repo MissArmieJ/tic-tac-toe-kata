@@ -47,8 +47,8 @@
     <Compile Include="Column.cs" />
     <Compile Include="Diagonal.cs" />
     <Compile Include="Field.cs" />
+    <Compile Include="FieldAlreadyTakenException.cs" />
     <Compile Include="FieldValue.cs" />
-    <Compile Include="GameResult.cs" />
     <Compile Include="IBoard.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

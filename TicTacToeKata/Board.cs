@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TicTacToeKata.Test;
 
 namespace TicTacToeKata
 {
@@ -24,7 +25,7 @@ namespace TicTacToeKata
             };
         }
 
-        
+
         public FieldValue GetValueFor(Field field)
         {
             return _fieldValues[field];
@@ -32,6 +33,10 @@ namespace TicTacToeKata
 
         public void SetFieldFor(Player player, Field field)
         {
+            if (_fieldValues[field] != FieldValue.Empty)
+            {
+                throw new FieldAlreadyTakenException();
+            }
             _fieldValues[field] = player.TokenValue();
         }
 
@@ -62,7 +67,7 @@ namespace TicTacToeKata
                 .Select(g => g.First())
                 .ToList();
 
-            return grouped.Count == 1 && grouped.First() != FieldValue.Empty ;
+            return grouped.Count == 1 && grouped.First() != FieldValue.Empty;
         }
 
         public int WinningRow()

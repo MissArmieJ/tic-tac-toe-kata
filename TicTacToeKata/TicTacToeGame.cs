@@ -11,9 +11,12 @@ namespace TicTacToeKata
             this._board = board;
         }
 
-        public GameResult Play()
+        public bool IsOver()
         {
-            return new GameResult(_board);
+            return _board.WinningColumn() > 0
+                    || _board.WinningRow() > 0
+                    || _board.WinningDiagonal() > 0
+                    || !_board.AnyEmptyFields();
         }
 
         public List<Player> Players()
@@ -24,5 +27,7 @@ namespace TicTacToeKata
                 Player.O
             };
         }
+
+        
     }
 }

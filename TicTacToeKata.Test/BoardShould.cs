@@ -68,6 +68,16 @@ namespace TicTacToeKata.Test
             Assert.That(_board.GetValueFor(Field.Field9), Is.EqualTo(FieldValue.O));
         }
 
+        //* a player can take a field if not already taken
+        [Test]
+        public void throw_error_when_a_player_tries_to_set_a_field_already_taken()
+        {
+            _board.SetFieldFor(Player.X, Field.Field9);
+
+            Assert.Throws<FieldAlreadyTakenException>(
+                () => _board.SetFieldFor(Player.O, Field.Field9));
+        }
+
         [Test]
         public void indicate_when_any_field_is_still_empty()
         {
