@@ -40,21 +40,6 @@ namespace TicTacToeKata
             return _fieldValues.Any(f => f.Value == FieldValue.Empty);
         }
 
-        public int WinningLine(List<BoardLine> boardLines)
-        {
-            var winningId = 0;
-            foreach (var line in boardLines)
-            {
-                var fields = line.GetFieldsIn();
-                if (IsWinningLine(fields))
-                {
-                    winningId = line.Id();
-                }
-            }
-            return winningId;
-        }
-
-        //TODO: accidentally deleted these tests (REDO!)
         public int WinningColumn()
         {
             var winningColumn = 0;
@@ -79,7 +64,7 @@ namespace TicTacToeKata
 
             return grouped.Count == 1 && grouped.First() != FieldValue.Empty ;
         }
-        //TODO: accidentally deleted these tests (REDO!)
+
         public int WinningRow()
         {
             var winningRow = 0;
@@ -94,7 +79,6 @@ namespace TicTacToeKata
             return winningRow;
         }
 
-        //TODO: accidentally deleted these tests (REDO!)
         public int WinningDiagonal()
         {
             var winningDiagonal = 0;
