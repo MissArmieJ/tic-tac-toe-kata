@@ -20,22 +20,22 @@ namespace TicTacToeKata.Test
         [Test]
         public void be_over_when_all_fields_on_board_are_taken()
         {
-            _board.AnyEmptyFields().Returns(false);
+            _board.HasAnyEmptyFields().Returns(false);
 
             bool isOver = _game.IsOver();
 
-            _board.Received().AnyEmptyFields();
+            _board.Received().HasAnyEmptyFields();
             Assert.That(isOver, Is.EqualTo(true));
         }
 
         [Test]
         public void not_be_over_when_any_fields_on_board_are_still_open()
         {
-            _board.AnyEmptyFields().Returns(true);
+            _board.HasAnyEmptyFields().Returns(true);
 
             var isOver = _game.IsOver();
 
-            _board.Received().AnyEmptyFields();
+            _board.Received().HasAnyEmptyFields();
             Assert.That(isOver, Is.EqualTo(false));
         }
 
@@ -59,33 +59,33 @@ namespace TicTacToeKata.Test
         [Test]
         public void be_over_when_all_fields_in_a_column_are_taken_by_a_player()
         {
-            _board.WinningColumn().Returns(1);
+            _board.HasWinningColumn().Returns(true);
 
             var isOver = _game.IsOver();
 
-            _board.Received().WinningColumn();
+            _board.Received().HasWinningColumn();
             Assert.That(isOver, Is.EqualTo(true));
         }
 
         [Test]
         public void be_over_when_all_fields_in_a_row_are_taken_by_a_player()
         {
-            _board.WinningRow().Returns(2);
+            _board.HasWinningRow().Returns(true);
 
             var isOver = _game.IsOver();
 
-            _board.Received().WinningRow();
+            _board.Received().HasWinningRow();
             Assert.That(isOver, Is.EqualTo(true));
         }
 
         [Test]
         public void be_over_when_all_fields_in_a_diagonal_are_taken_by_a_player()
         {
-            _board.WinningDiagonal().Returns(1);
+            _board.HasWinningDiagonal().Returns(true);
 
             var isOver = _game.IsOver();
 
-            _board.Received().WinningDiagonal();
+            _board.Received().HasWinningDiagonal();
             Assert.That(isOver, Is.EqualTo(true));
         }
 

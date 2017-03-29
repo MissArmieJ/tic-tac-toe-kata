@@ -1,6 +1,6 @@
 using System;
 
-namespace TicTacToeKata.Test
+namespace TicTacToeKata
 {
     public class FieldAlreadyTakenException : Exception
     {

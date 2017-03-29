@@ -12,9 +12,9 @@ namespace TicTacToeKata.Test
         {
             get
             {
-                yield return new TestCaseData(1, new List<Field> { Field.Field1, Field.Field4, Field.Field7 });
-                yield return new TestCaseData(2, new List<Field> { Field.Field2, Field.Field5, Field.Field8 });
-                yield return new TestCaseData(3, new List<Field> { Field.Field3, Field.Field6, Field.Field9 });
+                yield return new TestCaseData(new List<Field> { Field.Field1, Field.Field4, Field.Field7 });
+                yield return new TestCaseData(new List<Field> { Field.Field2, Field.Field5, Field.Field8 });
+                yield return new TestCaseData(new List<Field> { Field.Field3, Field.Field6, Field.Field9 });
             }
         }
 
@@ -22,9 +22,9 @@ namespace TicTacToeKata.Test
         {
             get
             {
-                yield return new TestCaseData(1, new List<Field> { Field.Field1, Field.Field2, Field.Field3 });
-                yield return new TestCaseData(2, new List<Field> { Field.Field4, Field.Field5, Field.Field6 });
-                yield return new TestCaseData(3, new List<Field> { Field.Field7, Field.Field8, Field.Field9 });
+                yield return new TestCaseData(new List<Field> { Field.Field1, Field.Field2, Field.Field3 });
+                yield return new TestCaseData(new List<Field> { Field.Field4, Field.Field5, Field.Field6 });
+                yield return new TestCaseData(new List<Field> { Field.Field7, Field.Field8, Field.Field9 });
             }
         }
 
@@ -32,8 +32,8 @@ namespace TicTacToeKata.Test
         {
             get
             {
-                yield return new TestCaseData(1, new List<Field> { Field.Field1, Field.Field5, Field.Field9 });
-                yield return new TestCaseData(2, new List<Field> { Field.Field3, Field.Field5, Field.Field7 });
+                yield return new TestCaseData(new List<Field> { Field.Field1, Field.Field5, Field.Field9 });
+                yield return new TestCaseData(new List<Field> { Field.Field3, Field.Field5, Field.Field7 });
             }
         }
 
@@ -80,7 +80,7 @@ namespace TicTacToeKata.Test
         [Test]
         public void indicate_when_any_field_is_still_empty()
         {
-            var anyEmptyFields = _board.AnyEmptyFields();
+            var anyEmptyFields = _board.HasAnyEmptyFields();
 
             Assert.That(anyEmptyFields, Is.True);
         }
@@ -93,54 +93,42 @@ namespace TicTacToeKata.Test
                 _board.SetPlayerField(Player.X, field);
             }
 
-            var anyEmptyFields = _board.AnyEmptyFields();
+            var anyEmptyFields = _board.HasAnyEmptyFields();
 
             Assert.That(anyEmptyFields, Is.False);
         }      
 
-        [Test]
-        public void indicate_when_no_column_has_been_taken_by_a_player()
-        {
-            var winningColumn = _board.WinningColumn();
-
-            Assert.That(winningColumn, Is.EqualTo(0));
-        }
-
         [TestCaseSource(nameof(ColumnLineTestCases))]
-        public void indicate_when_a_column_has_been_taken_by_a_player(int columnId, List<Field> fields)
+        public void indicate_when_a_column_has_been_taken_by_a_player(List<Field> fields)
         {
             foreach (var field in fields)
             {
                 _board.SetPlayerField(Player.X, field);
             }
-
-            var winningColumn = _board.WinningColumn();
-
-            Assert.That(winningColumn, Is.EqualTo(columnId));
+            
+            Assert.That(_board.HasWinningColumn(), Is.True);
         }
 
         [TestCaseSource(nameof(RowLinesTestCases))]
-        public void indicate_when_a_row_has_been_taken_by_a_player(int rowId, List<Field> fields)
+        public void indicate_when_a_row_has_been_taken_by_a_player(List<Field> fields)
         {
             foreach (var field in fields)
             {
                 _board.SetPlayerField(Player.X, field);
             }
 
-            Assert.That(_board.WinningRow(), Is.EqualTo(rowId));
+            Assert.That(_board.HasWinningRow(), Is.True);
         }
 
         [TestCaseSource(nameof(DiagonalLinesTestCases))]
-        public void indicate_when_a_diagonal_has_been_taken_by_a_player(int diagonalId, List<Field> fields)
+        public void indicate_when_a_diagonal_has_been_taken_by_a_player(List<Field> fields)
         {
             foreach (var field in fields)
             {
                 _board.SetPlayerField(Player.X, field);
             }
-
-            var winningDiagonal = _board.WinningDiagonal();
-
-            Assert.That(winningDiagonal, Is.EqualTo(diagonalId));
+            
+            Assert.That(_board.HasWinningDiagonal(), Is.True);
         }
     }
 }

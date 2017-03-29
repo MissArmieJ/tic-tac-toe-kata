@@ -13,10 +13,10 @@ namespace TicTacToeKata
 
         public bool IsOver()
         {
-            return _board.WinningColumn() > 0
-                    || _board.WinningRow() > 0
-                    || _board.WinningDiagonal() > 0
-                    || !_board.AnyEmptyFields();
+            return _board.HasWinningColumn()
+                    || _board.HasWinningRow()
+                    || _board.HasWinningDiagonal()
+                    || !_board.HasAnyEmptyFields();
         }
 
         public List<Player> Players()

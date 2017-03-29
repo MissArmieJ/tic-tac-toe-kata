@@ -5,10 +5,9 @@ namespace TicTacToeKata
         BoardLayout Layout();
         FieldValue GetValueFor(Field field);
         void SetPlayerField(Player player, Field field);
-        bool AnyEmptyFields();
-
-        int WinningColumn();
-        int WinningRow();
-        int WinningDiagonal();
+        bool HasAnyEmptyFields();
+        bool HasWinningColumn();
+        bool HasWinningRow();
+        bool HasWinningDiagonal();
     }
 }

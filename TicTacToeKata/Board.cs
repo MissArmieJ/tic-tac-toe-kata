@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using TicTacToeKata.Test;
 
 namespace TicTacToeKata
 {
@@ -24,6 +23,10 @@ namespace TicTacToeKata
             };
         }
 
+        public BoardLayout Layout()
+        {
+            return new BoardLayout();
+        }
 
         public FieldValue GetValueFor(Field field)
         {
@@ -44,23 +47,26 @@ namespace TicTacToeKata
             return _fieldValues[field] != FieldValue.Empty;
         }
 
-        public bool AnyEmptyFields()
+        public bool HasAnyEmptyFields()
         {
             return _fieldValues.Any(f => f.Value == FieldValue.Empty);
         }
 
-        public int WinningColumn()
+        public bool HasWinningColumn()
         {
-            var winningColumn = 0;
-            foreach (var column in Layout().Columns())
-            {
-                var fields = column.GetFieldsIn();
-                if (IsWinningLine(fields))
-                {
-                    winningColumn = column.Id();
-                }
-            }
-            return winningColumn;
+            //Q: Is this Feature Envy?
+            return Layout().Columns().Select(column => column.GetFieldsIn()).Any(IsWinningLine);
+        }
+
+        public bool HasWinningRow()
+        {
+            //Q: Is this still Duplication?
+            return Layout().Rows().Select(row => row.GetFieldsIn()).Any(IsWinningLine);
+        }
+
+        public bool HasWinningDiagonal()
+        {
+            return Layout().Diagonals().Select(diagonal => diagonal.GetFieldsIn()).Any(IsWinningLine);
         }
 
         private bool IsWinningLine(List<Field> fields)
@@ -74,37 +80,5 @@ namespace TicTacToeKata
             return grouped.Count == 1 && grouped.First() != FieldValue.Empty;
         }
 
-        public int WinningRow()
-        {
-            var winningRow = 0;
-            foreach (var row in Layout().Rows())
-            {
-                var fields = row.GetFieldsIn();
-                if (IsWinningLine(fields))
-                {
-                    winningRow = row.Id();
-                }
-            }
-            return winningRow;
-        }
-
-        public int WinningDiagonal()
-        {
-            var winningDiagonal = 0;
-            foreach (var diagonal in Layout().Diagonals())
-            {
-                var fields = diagonal.GetFieldsIn();
-                if (IsWinningLine(fields))
-                {
-                    winningDiagonal = diagonal.Id();
-                }
-            }
-            return winningDiagonal;
-        }
-
-        public BoardLayout Layout()
-        {
-            return new BoardLayout();
-        }
     }
 }
