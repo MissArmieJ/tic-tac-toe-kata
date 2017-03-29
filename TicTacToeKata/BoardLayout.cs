@@ -2,9 +2,9 @@
 
 namespace TicTacToeKata
 {
-    public class BoardLayout
+    public static class BoardLayout
     {
-        public List<Column> Columns()
+        public static List<Column> Columns()
         {
             return new List<Column>()
             {
@@ -14,7 +14,7 @@ namespace TicTacToeKata
             };
         }
 
-        public List<Row> Rows()
+        public static List<Row> Rows()
         {
             return new List<Row>()
             {
@@ -24,7 +24,7 @@ namespace TicTacToeKata
             };
         }
 
-        public List<Diagonal> Diagonals()
+        public static List<Diagonal> Diagonals()
         {
             return new List<Diagonal>()
             {

@@ -6,18 +6,18 @@ namespace TicTacToeKata.Test
     [TestFixture]
     public class BoardLayoutShould
     {
-        private BoardLayout _layout;
+//        private BoardLayout _layout;
 
         [SetUp]
         public void Setup()
         {
-            _layout = new BoardLayout();
+//            _layout = new BoardLayout();
         }
 
         [Test]
         public void have_3_columns()
         {
-            List<Column> columns = _layout.Columns();
+            List<Column> columns = BoardLayout.Columns();
 
             Assert.That(columns.Count, Is.EqualTo(3));
         }
@@ -25,7 +25,7 @@ namespace TicTacToeKata.Test
         [Test]
         public void have_3_rows()
         {
-            List<Row> rows = _layout.Rows();
+            List<Row> rows = BoardLayout.Rows();
 
             Assert.That(rows.Count, Is.EqualTo(3));
         }
@@ -33,7 +33,7 @@ namespace TicTacToeKata.Test
         [Test]
         public void have_2_diagonals()
         {
-            List<Diagonal> diagonals = _layout.Diagonals();
+            List<Diagonal> diagonals = BoardLayout.Diagonals();
 
             Assert.That(diagonals.Count, Is.EqualTo(2));
         }

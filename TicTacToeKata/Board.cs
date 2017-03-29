@@ -5,9 +5,14 @@ namespace TicTacToeKata
 {
     public class Board : IBoard
     {
-        private readonly Dictionary<Field, FieldValue> _fieldValues;
+        private Dictionary<Field, FieldValue> _fieldValues;
 
         public Board()
+        {
+            ClearBoard();
+        }
+
+        private void ClearBoard()
         {
             _fieldValues = new Dictionary<Field, FieldValue>()
             {
@@ -21,11 +26,6 @@ namespace TicTacToeKata
                 {Field.Field8, FieldValue.Empty},
                 {Field.Field9, FieldValue.Empty},
             };
-        }
-
-        public BoardLayout Layout()
-        {
-            return new BoardLayout();
         }
 
         public FieldValue GetValueFor(Field field)
@@ -54,19 +54,23 @@ namespace TicTacToeKata
 
         public bool HasWinningColumn()
         {
-            //Q: Is this Feature Envy?
-            return Layout().Columns().Select(column => column.GetFieldsIn()).Any(IsWinningLine);
+            return BoardLayout.Columns()
+                .Select(column => column.GetFieldsIn())
+                .Any(IsWinningLine);
         }
 
         public bool HasWinningRow()
         {
-            //Q: Is this still Duplication?
-            return Layout().Rows().Select(row => row.GetFieldsIn()).Any(IsWinningLine);
+            return BoardLayout.Rows()
+                .Select(row => row.GetFieldsIn())
+                .Any(IsWinningLine);
         }
 
         public bool HasWinningDiagonal()
         {
-            return Layout().Diagonals().Select(diagonal => diagonal.GetFieldsIn()).Any(IsWinningLine);
+            return BoardLayout.Diagonals()
+                .Select(diagonal => diagonal.GetFieldsIn())
+                .Any(IsWinningLine);
         }
 
         private bool IsWinningLine(List<Field> fields)
@@ -79,6 +83,5 @@ namespace TicTacToeKata
 
             return grouped.Count == 1 && grouped.First() != FieldValue.Empty;
         }
-
     }
 }
