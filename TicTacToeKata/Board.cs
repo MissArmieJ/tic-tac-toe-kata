@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using TicTacToeKata.Test;
@@ -31,13 +30,18 @@ namespace TicTacToeKata
             return _fieldValues[field];
         }
 
-        public void SetFieldFor(Player player, Field field)
+        public void SetPlayerField(Player player, Field field)
         {
-            if (_fieldValues[field] != FieldValue.Empty)
+            if (IsTaken(field))
             {
                 throw new FieldAlreadyTakenException();
             }
             _fieldValues[field] = player.TokenValue();
+        }
+
+        private bool IsTaken(Field field)
+        {
+            return _fieldValues[field] != FieldValue.Empty;
         }
 
         public bool AnyEmptyFields()

@@ -55,7 +55,7 @@ namespace TicTacToeKata.Test
         [Test]
         public void set_field_for_player_X()
         {
-            _board.SetFieldFor(Player.X, Field.Field1);
+            _board.SetPlayerField(Player.X, Field.Field1);
 
             Assert.That(_board.GetValueFor(Field.Field1), Is.EqualTo(FieldValue.X));
         }
@@ -63,19 +63,18 @@ namespace TicTacToeKata.Test
         [Test]
         public void set_field_for_player_O()
         {
-            _board.SetFieldFor(Player.O, Field.Field9);
+            _board.SetPlayerField(Player.O, Field.Field9);
 
             Assert.That(_board.GetValueFor(Field.Field9), Is.EqualTo(FieldValue.O));
         }
 
-        //* a player can take a field if not already taken
         [Test]
         public void throw_error_when_a_player_tries_to_set_a_field_already_taken()
         {
-            _board.SetFieldFor(Player.X, Field.Field9);
+            _board.SetPlayerField(Player.X, Field.Field9);
 
             Assert.Throws<FieldAlreadyTakenException>(
-                () => _board.SetFieldFor(Player.O, Field.Field9));
+                () => _board.SetPlayerField(Player.O, Field.Field9));
         }
 
         [Test]
@@ -91,7 +90,7 @@ namespace TicTacToeKata.Test
         {
             foreach (var field in BoardFields.Fields())
             {
-                _board.SetFieldFor(Player.X, field);
+                _board.SetPlayerField(Player.X, field);
             }
 
             var anyEmptyFields = _board.AnyEmptyFields();
@@ -112,7 +111,7 @@ namespace TicTacToeKata.Test
         {
             foreach (var field in fields)
             {
-                _board.SetFieldFor(Player.X, field);
+                _board.SetPlayerField(Player.X, field);
             }
 
             var winningColumn = _board.WinningColumn();
@@ -125,7 +124,7 @@ namespace TicTacToeKata.Test
         {
             foreach (var field in fields)
             {
-                _board.SetFieldFor(Player.X, field);
+                _board.SetPlayerField(Player.X, field);
             }
 
             Assert.That(_board.WinningRow(), Is.EqualTo(rowId));
@@ -136,7 +135,7 @@ namespace TicTacToeKata.Test
         {
             foreach (var field in fields)
             {
-                _board.SetFieldFor(Player.X, field);
+                _board.SetPlayerField(Player.X, field);
             }
 
             var winningDiagonal = _board.WinningDiagonal();

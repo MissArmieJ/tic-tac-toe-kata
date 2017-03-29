@@ -17,7 +17,6 @@ namespace TicTacToeKata.Test
             _game = new TicTacToeGame(_board);
         }
 
-        //a game is over when all fields are taken
         [Test]
         public void be_over_when_all_fields_on_board_are_taken()
         {
@@ -57,7 +56,6 @@ namespace TicTacToeKata.Test
             Assert.That(players.Contains(Player.O), Is.True);
         }
 
-        //a game is over when all fields in a column are taken by a player
         [Test]
         public void be_over_when_all_fields_in_a_column_are_taken_by_a_player()
         {
@@ -68,7 +66,7 @@ namespace TicTacToeKata.Test
             _board.Received().WinningColumn();
             Assert.That(isOver, Is.EqualTo(true));
         }
-        //a game is over when all fields in a row are taken by a player
+
         [Test]
         public void be_over_when_all_fields_in_a_row_are_taken_by_a_player()
         {
@@ -80,7 +78,6 @@ namespace TicTacToeKata.Test
             Assert.That(isOver, Is.EqualTo(true));
         }
 
-        //a game is over when all fields in a diagonal are taken by a player
         [Test]
         public void be_over_when_all_fields_in_a_diagonal_are_taken_by_a_player()
         {
@@ -92,5 +89,19 @@ namespace TicTacToeKata.Test
             Assert.That(isOver, Is.EqualTo(true));
         }
 
+        [Test]
+        public void play_until_the_game_is_over()
+        {
+            _game.Play();
+
+            Assert.That(_game.IsOver(), Is.EqualTo(true));
+
+        }
+        //players take turns taking fields until the game is over
+        //        [Test]
+        //        public void switch_players_during_play_until_the_game_is_over()
+        //        {
+        //            //perhaps check sequence of methods called on players?
+        //        }
     }
 }

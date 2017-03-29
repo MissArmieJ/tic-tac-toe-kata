@@ -28,6 +28,11 @@ namespace TicTacToeKata
             };
         }
 
-        
+        public void Play()
+        {
+            _board.SetPlayerField(Player.O, Field.Field1);
+            _board.SetPlayerField(Player.O, Field.Field2);
+            _board.SetPlayerField(Player.O, Field.Field3);
+        }
     }
 }
