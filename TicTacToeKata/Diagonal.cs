@@ -17,16 +17,16 @@ namespace TicTacToeKata
             {
                 return new List<Field>
                 {
-                    Field.Field1,
-                    Field.Field5,
-                    Field.Field9
+                    Field.TopLeft,
+                    Field.MidCentre,
+                    Field.BottomRight
                 };
             }
             return new List<Field>
                 {
-                    Field.Field3,
-                    Field.Field5,
-                    Field.Field7
+                    Field.TopRight,
+                    Field.MidCentre,
+                    Field.BottomLeft
                 };
         }
     }

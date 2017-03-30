@@ -30,9 +30,9 @@ namespace TicTacToeKata
 
         public void Play()
         {
-            _board.SetPlayerField(Player.O, Field.Field1);
-            _board.SetPlayerField(Player.O, Field.Field2);
-            _board.SetPlayerField(Player.O, Field.Field3);
+            _board.SetPlayerField(Player.O, Field.TopLeft);
+            _board.SetPlayerField(Player.O, Field.TopCentre);
+            _board.SetPlayerField(Player.O, Field.TopRight);
         }
     }
 }

@@ -10,8 +10,8 @@ namespace TicTacToeKata.Test
         {
             get
             {
-                yield return new TestCaseData(1, new List<Field> { Field.Field1, Field.Field5, Field.Field9 });
-                yield return new TestCaseData(2, new List<Field> { Field.Field3, Field.Field5, Field.Field7 });
+                yield return new TestCaseData(1, new List<Field> { Field.TopLeft, Field.MidCentre, Field.BottomRight });
+                yield return new TestCaseData(2, new List<Field> { Field.TopRight, Field.MidCentre, Field.BottomLeft });
             }
         }
 

@@ -12,9 +12,9 @@ namespace TicTacToeKata.Test
         {
             get
             {
-                yield return new TestCaseData(new List<Field> { Field.Field1, Field.Field4, Field.Field7 });
-                yield return new TestCaseData(new List<Field> { Field.Field2, Field.Field5, Field.Field8 });
-                yield return new TestCaseData(new List<Field> { Field.Field3, Field.Field6, Field.Field9 });
+                yield return new TestCaseData(new List<Field> { Field.TopLeft, Field.MidLeft, Field.BottomLeft });
+                yield return new TestCaseData(new List<Field> { Field.TopCentre, Field.MidCentre, Field.BottomCentre });
+                yield return new TestCaseData(new List<Field> { Field.TopRight, Field.MidRight, Field.BottomRight });
             }
         }
 
@@ -22,9 +22,9 @@ namespace TicTacToeKata.Test
         {
             get
             {
-                yield return new TestCaseData(new List<Field> { Field.Field1, Field.Field2, Field.Field3 });
-                yield return new TestCaseData(new List<Field> { Field.Field4, Field.Field5, Field.Field6 });
-                yield return new TestCaseData(new List<Field> { Field.Field7, Field.Field8, Field.Field9 });
+                yield return new TestCaseData(new List<Field> { Field.TopLeft, Field.TopCentre, Field.TopRight });
+                yield return new TestCaseData(new List<Field> { Field.MidLeft, Field.MidCentre, Field.MidRight });
+                yield return new TestCaseData(new List<Field> { Field.BottomLeft, Field.BottomCentre, Field.BottomRight });
             }
         }
 
@@ -32,8 +32,8 @@ namespace TicTacToeKata.Test
         {
             get
             {
-                yield return new TestCaseData(new List<Field> { Field.Field1, Field.Field5, Field.Field9 });
-                yield return new TestCaseData(new List<Field> { Field.Field3, Field.Field5, Field.Field7 });
+                yield return new TestCaseData(new List<Field> { Field.TopLeft, Field.MidCentre, Field.BottomRight });
+                yield return new TestCaseData(new List<Field> { Field.TopRight, Field.MidCentre, Field.BottomLeft });
             }
         }
 
@@ -55,26 +55,26 @@ namespace TicTacToeKata.Test
         [Test]
         public void set_field_for_player_X()
         {
-            _board.SetPlayerField(Player.X, Field.Field1);
+            _board.SetPlayerField(Player.X, Field.TopLeft);
 
-            Assert.That(_board.GetValueFor(Field.Field1), Is.EqualTo(FieldValue.X));
+            Assert.That(_board.GetValueFor(Field.TopLeft), Is.EqualTo(FieldValue.X));
         }
 
         [Test]
         public void set_field_for_player_O()
         {
-            _board.SetPlayerField(Player.O, Field.Field9);
+            _board.SetPlayerField(Player.O, Field.BottomRight);
 
-            Assert.That(_board.GetValueFor(Field.Field9), Is.EqualTo(FieldValue.O));
+            Assert.That(_board.GetValueFor(Field.BottomRight), Is.EqualTo(FieldValue.O));
         }
 
         [Test]
         public void throw_error_when_a_player_tries_to_set_a_field_already_taken()
         {
-            _board.SetPlayerField(Player.X, Field.Field9);
+            _board.SetPlayerField(Player.X, Field.BottomRight);
 
             Assert.Throws<FieldAlreadyTakenException>(
-                () => _board.SetPlayerField(Player.O, Field.Field9));
+                () => _board.SetPlayerField(Player.O, Field.BottomRight));
         }
 
         [Test]

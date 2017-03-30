@@ -5,15 +5,15 @@
         private readonly int _row;
         private readonly int _col;
 
-        public static Field Field1 = new Field(1, 1);
-        public static Field Field2 = new Field(1, 2);
-        public static Field Field3 = new Field(1, 3);
-        public static Field Field4 = new Field(2, 1);
-        public static Field Field5 = new Field(2, 2);
-        public static Field Field6 = new Field(2, 3);
-        public static Field Field7 = new Field(3, 1);
-        public static Field Field8 = new Field(3, 2);
-        public static Field Field9 = new Field(3, 3);
+        public static Field TopLeft = new Field(1, 1);
+        public static Field TopCentre = new Field(1, 2);
+        public static Field TopRight = new Field(1, 3);
+        public static Field MidLeft = new Field(2, 1);
+        public static Field MidCentre = new Field(2, 2);
+        public static Field MidRight = new Field(2, 3);
+        public static Field BottomLeft = new Field(3, 1);
+        public static Field BottomCentre = new Field(3, 2);
+        public static Field BottomRight = new Field(3, 3);
 
         private Field(int row, int col)
         {

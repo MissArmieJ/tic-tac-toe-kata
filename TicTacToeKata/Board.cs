@@ -16,15 +16,15 @@ namespace TicTacToeKata
         {
             _fieldValues = new Dictionary<Field, FieldValue>()
             {
-                {Field.Field1, FieldValue.Empty},
-                {Field.Field2, FieldValue.Empty},
-                {Field.Field3, FieldValue.Empty},
-                {Field.Field4, FieldValue.Empty},
-                {Field.Field5, FieldValue.Empty},
-                {Field.Field6, FieldValue.Empty},
-                {Field.Field7, FieldValue.Empty},
-                {Field.Field8, FieldValue.Empty},
-                {Field.Field9, FieldValue.Empty},
+                {Field.TopLeft, FieldValue.Empty},
+                {Field.TopCentre, FieldValue.Empty},
+                {Field.TopRight, FieldValue.Empty},
+                {Field.MidLeft, FieldValue.Empty},
+                {Field.MidCentre, FieldValue.Empty},
+                {Field.MidRight, FieldValue.Empty},
+                {Field.BottomLeft, FieldValue.Empty},
+                {Field.BottomCentre, FieldValue.Empty},
+                {Field.BottomRight, FieldValue.Empty},
             };
         }
 
