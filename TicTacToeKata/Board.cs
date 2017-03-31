@@ -6,10 +6,17 @@ namespace TicTacToeKata
     public class Board : IBoard
     {
         private Dictionary<Field, FieldValue> _fieldValues;
+        private Player _nextPlayer;
 
         public Board()
         {
+            SetFirstPlayer();
             ClearBoard();
+        }
+
+        private void SetFirstPlayer()
+        {
+            _nextPlayer = Player.X;
         }
 
         private void ClearBoard()
@@ -33,15 +40,6 @@ namespace TicTacToeKata
             return _fieldValues[field];
         }
 
-        public void SetPlayerField(Player player, Field field)
-        {
-            if (IsTaken(field))
-            {
-                throw new FieldAlreadyTakenException();
-            }
-            _fieldValues[field] = player.TokenValue();
-        }
-
         private bool IsTaken(Field field)
         {
             return _fieldValues[field] != FieldValue.Empty;
@@ -52,21 +50,48 @@ namespace TicTacToeKata
             return _fieldValues.Any(f => f.Value == FieldValue.Empty);
         }
 
-        public bool HasWinningColumn()
+        public void Play(Field field)
+        {
+            if (IsTaken(field))
+            {
+                throw new FieldAlreadyTakenException();
+            }
+            SetPlayersTokenOn(field);
+            SwitchPlayers();
+        }
+
+        private void SetPlayersTokenOn(Field field)
+        {
+            _fieldValues[field] = _nextPlayer.TokenValue();
+        }
+
+        private void SwitchPlayers()
+        {
+            _nextPlayer = _nextPlayer == Player.X ? Player.O : Player.X;
+        }
+
+        public bool HasWinningLine()
+        {
+            return HasWinningColumn()
+                || HasWinningRow()
+                || HasWinningDiagonal();
+        }
+
+        private bool HasWinningColumn()
         {
             return BoardLayout.Columns()
                 .Select(column => column.GetFieldsIn())
                 .Any(IsWinningLine);
         }
 
-        public bool HasWinningRow()
+        private bool HasWinningRow()
         {
             return BoardLayout.Rows()
                 .Select(row => row.GetFieldsIn())
                 .Any(IsWinningLine);
         }
 
-        public bool HasWinningDiagonal()
+        private bool HasWinningDiagonal()
         {
             return BoardLayout.Diagonals()
                 .Select(diagonal => diagonal.GetFieldsIn())
@@ -83,5 +108,6 @@ namespace TicTacToeKata
 
             return grouped.Count == 1 && grouped.First() != FieldValue.Empty;
         }
+
     }
 }

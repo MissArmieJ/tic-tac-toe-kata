@@ -13,10 +13,7 @@ namespace TicTacToeKata
 
         public bool IsOver()
         {
-            return _board.HasWinningColumn()
-                    || _board.HasWinningRow()
-                    || _board.HasWinningDiagonal()
-                    || !_board.HasAnyEmptyFields();
+            return _board.HasWinningLine() || !_board.HasAnyEmptyFields();
         }
 
         public List<Player> Players()
@@ -30,9 +27,7 @@ namespace TicTacToeKata
 
         public void Play()
         {
-            _board.SetPlayerField(Player.O, Field.TopLeft);
-            _board.SetPlayerField(Player.O, Field.TopCentre);
-            _board.SetPlayerField(Player.O, Field.TopRight);
+            
         }
     }
 }

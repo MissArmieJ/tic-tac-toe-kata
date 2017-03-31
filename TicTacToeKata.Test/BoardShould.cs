@@ -12,9 +12,9 @@ namespace TicTacToeKata.Test
         {
             get
             {
-                yield return new TestCaseData(new List<Field> { Field.TopLeft, Field.MidLeft, Field.BottomLeft });
-                yield return new TestCaseData(new List<Field> { Field.TopCentre, Field.MidCentre, Field.BottomCentre });
-                yield return new TestCaseData(new List<Field> { Field.TopRight, Field.MidRight, Field.BottomRight });
+                yield return new TestCaseData(new List<Field> { Field.TopLeft, Field.MidCentre, Field.MidLeft, Field.BottomRight, Field.BottomLeft });
+                yield return new TestCaseData(new List<Field> { Field.TopCentre, Field.TopLeft, Field.MidCentre, Field.MidLeft, Field.BottomCentre });
+                yield return new TestCaseData(new List<Field> { Field.TopRight, Field.TopLeft, Field.MidRight, Field.MidCentre, Field.BottomRight });
             }
         }
 
@@ -22,9 +22,9 @@ namespace TicTacToeKata.Test
         {
             get
             {
-                yield return new TestCaseData(new List<Field> { Field.TopLeft, Field.TopCentre, Field.TopRight });
-                yield return new TestCaseData(new List<Field> { Field.MidLeft, Field.MidCentre, Field.MidRight });
-                yield return new TestCaseData(new List<Field> { Field.BottomLeft, Field.BottomCentre, Field.BottomRight });
+                yield return new TestCaseData(new List<Field> { Field.TopLeft, Field.MidLeft, Field.TopCentre, Field.MidCentre, Field.TopRight });
+                yield return new TestCaseData(new List<Field> { Field.MidLeft, Field.TopCentre, Field.MidCentre, Field.TopRight, Field.MidRight });
+                yield return new TestCaseData(new List<Field> { Field.BottomLeft, Field.TopRight, Field.BottomCentre, Field.TopLeft, Field.BottomRight });
             }
         }
 
@@ -32,8 +32,8 @@ namespace TicTacToeKata.Test
         {
             get
             {
-                yield return new TestCaseData(new List<Field> { Field.TopLeft, Field.MidCentre, Field.BottomRight });
-                yield return new TestCaseData(new List<Field> { Field.TopRight, Field.MidCentre, Field.BottomLeft });
+                yield return new TestCaseData(new List<Field> { Field.TopLeft, Field.TopRight, Field.MidCentre, Field.MidRight, Field.BottomRight });
+                yield return new TestCaseData(new List<Field> { Field.TopRight, Field.TopCentre, Field.MidCentre, Field.TopLeft, Field.BottomLeft });
             }
         }
 
@@ -53,28 +53,45 @@ namespace TicTacToeKata.Test
         }
 
         [Test]
-        public void set_field_for_player_X()
+        public void play_field_for_first_player_X()
         {
-            _board.SetPlayerField(Player.X, Field.TopLeft);
+            _board.Play(Field.TopLeft);
 
             Assert.That(_board.GetValueFor(Field.TopLeft), Is.EqualTo(FieldValue.X));
         }
 
         [Test]
-        public void set_field_for_player_O()
+        public void play_field_for_second_player_O()
         {
-            _board.SetPlayerField(Player.O, Field.BottomRight);
+            _board.Play(Field.TopLeft);
+            _board.Play(Field.MidCentre);
 
-            Assert.That(_board.GetValueFor(Field.BottomRight), Is.EqualTo(FieldValue.O));
+            Assert.That(_board.GetValueFor(Field.MidCentre), Is.EqualTo(FieldValue.O));
         }
+
+        //        [Test]
+        //        public void set_field_for_player_X()
+        //        {
+        //            _board.SetPlayerField(Player.X, Field.TopLeft);
+        //
+        //            Assert.That(_board.GetValueFor(Field.TopLeft), Is.EqualTo(FieldValue.X));
+        //        }
+        //
+        //        [Test]
+        //        public void set_field_for_player_O()
+        //        {
+        //            _board.SetPlayerField(Player.O, Field.BottomRight);
+        //
+        //            Assert.That(_board.GetValueFor(Field.BottomRight), Is.EqualTo(FieldValue.O));
+        //        }
 
         [Test]
         public void throw_error_when_a_player_tries_to_set_a_field_already_taken()
         {
-            _board.SetPlayerField(Player.X, Field.BottomRight);
+            _board.Play(Field.TopLeft);
 
             Assert.Throws<FieldAlreadyTakenException>(
-                () => _board.SetPlayerField(Player.O, Field.BottomRight));
+                () => _board.Play(Field.TopLeft));
         }
 
         [Test]
@@ -90,23 +107,23 @@ namespace TicTacToeKata.Test
         {
             foreach (var field in BoardFields.Fields())
             {
-                _board.SetPlayerField(Player.X, field);
+                _board.Play(field);
             }
 
             var anyEmptyFields = _board.HasAnyEmptyFields();
 
             Assert.That(anyEmptyFields, Is.False);
-        }      
+        }
 
         [TestCaseSource(nameof(ColumnLineTestCases))]
         public void indicate_when_a_column_has_been_taken_by_a_player(List<Field> fields)
         {
             foreach (var field in fields)
             {
-                _board.SetPlayerField(Player.X, field);
+                _board.Play(field);
             }
-            
-            Assert.That(_board.HasWinningColumn(), Is.True);
+
+            Assert.That(_board.HasWinningLine(), Is.True);
         }
 
         [TestCaseSource(nameof(RowLinesTestCases))]
@@ -114,10 +131,10 @@ namespace TicTacToeKata.Test
         {
             foreach (var field in fields)
             {
-                _board.SetPlayerField(Player.X, field);
+                _board.Play(field);
             }
 
-            Assert.That(_board.HasWinningRow(), Is.True);
+            Assert.That(_board.HasWinningLine(), Is.True);
         }
 
         [TestCaseSource(nameof(DiagonalLinesTestCases))]
@@ -125,10 +142,10 @@ namespace TicTacToeKata.Test
         {
             foreach (var field in fields)
             {
-                _board.SetPlayerField(Player.X, field);
+                _board.Play(field);
             }
-            
-            Assert.That(_board.HasWinningDiagonal(), Is.True);
+
+            Assert.That(_board.HasWinningLine(), Is.True);
         }
     }
 }

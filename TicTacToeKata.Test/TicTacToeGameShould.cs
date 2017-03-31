@@ -56,38 +56,38 @@ namespace TicTacToeKata.Test
             Assert.That(players.Contains(Player.O), Is.True);
         }
 
-        [Test]
-        public void be_over_when_all_fields_in_a_column_are_taken_by_a_player()
-        {
-            _board.HasWinningColumn().Returns(true);
+//        [Test]
+//        public void be_over_when_all_fields_in_a_column_are_taken_by_a_player()
+//        {
+//            _board.HasWinningColumn().Returns(true);
+//
+//            var isOver = _game.IsOver();
+//
+//            _board.Received().HasWinningColumn();
+//            Assert.That(isOver, Is.EqualTo(true));
+//        }
 
-            var isOver = _game.IsOver();
-
-            _board.Received().HasWinningColumn();
-            Assert.That(isOver, Is.EqualTo(true));
-        }
-
-        [Test]
-        public void be_over_when_all_fields_in_a_row_are_taken_by_a_player()
-        {
-            _board.HasWinningRow().Returns(true);
-
-            var isOver = _game.IsOver();
-
-            _board.Received().HasWinningRow();
-            Assert.That(isOver, Is.EqualTo(true));
-        }
-
-        [Test]
-        public void be_over_when_all_fields_in_a_diagonal_are_taken_by_a_player()
-        {
-            _board.HasWinningDiagonal().Returns(true);
-
-            var isOver = _game.IsOver();
-
-            _board.Received().HasWinningDiagonal();
-            Assert.That(isOver, Is.EqualTo(true));
-        }
+//        [Test]
+//        public void be_over_when_all_fields_in_a_row_are_taken_by_a_player()
+//        {
+//            _board.HasWinningRow().Returns(true);
+//
+//            var isOver = _game.IsOver();
+//
+//            _board.Received().HasWinningRow();
+//            Assert.That(isOver, Is.EqualTo(true));
+//        }
+//
+//        [Test]
+//        public void be_over_when_all_fields_in_a_diagonal_are_taken_by_a_player()
+//        {
+//            _board.HasWinningDiagonal().Returns(true);
+//
+//            var isOver = _game.IsOver();
+//
+//            _board.Received().HasWinningDiagonal();
+//            Assert.That(isOver, Is.EqualTo(true));
+//        }
 
         [Test]
         public void play_until_the_game_is_over()
