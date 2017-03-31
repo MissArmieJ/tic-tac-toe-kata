@@ -1,4 +1,4 @@
-namespace TicTacToeKata
+namespace TicTacToeKata.Board
 {
     public interface IBoard
     {

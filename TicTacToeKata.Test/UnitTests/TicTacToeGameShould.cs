@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using NSubstitute;
 using NUnit.Framework;
+using TicTacToeKata.Board;
+using TicTacToeKata.Game;
 
-namespace TicTacToeKata.Test
+namespace TicTacToeKata.Test.UnitTests
 {
     [TestFixture]
     public class TicTacToeGameShould

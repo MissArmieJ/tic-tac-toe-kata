@@ -1,4 +1,6 @@
-namespace TicTacToeKata
+using TicTacToeKata.Board;
+
+namespace TicTacToeKata.Game
 {
     public interface IConsole
     {

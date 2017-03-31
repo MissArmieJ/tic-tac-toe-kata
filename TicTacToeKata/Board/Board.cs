@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
+using TicTacToeKata.Exception;
+using TicTacToeKata.Game;
 
-namespace TicTacToeKata
+namespace TicTacToeKata.Board
 {
     public class Board : IBoard
     {
@@ -54,7 +56,7 @@ namespace TicTacToeKata
         {
             if (IsTaken(field))
             {
-                throw new FieldAlreadyTakenException();
+                throw new FieldAlreadyTakenException("Field has already been taken.");
             }
             SetPlayersTokenOn(field);
             SwitchPlayers();

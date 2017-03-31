@@ -1,17 +1,15 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
+using TicTacToeKata.Board;
 
-namespace TicTacToeKata.Test
+namespace TicTacToeKata.Test.UnitTests
 {
     [TestFixture]
     public class BoardLayoutShould
     {
-//        private BoardLayout _layout;
-
         [SetUp]
         public void Setup()
         {
-//            _layout = new BoardLayout();
         }
 
         [Test]

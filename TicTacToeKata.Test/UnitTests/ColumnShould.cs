@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
+using TicTacToeKata.Board;
 
-namespace TicTacToeKata.Test
+namespace TicTacToeKata.Test.UnitTests
 {
     [TestFixture]
     public class ColumnShould

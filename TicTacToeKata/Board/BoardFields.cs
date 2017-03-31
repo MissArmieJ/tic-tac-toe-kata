@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace TicTacToeKata
+namespace TicTacToeKata.Board
 {
     public static class BoardFields
     {

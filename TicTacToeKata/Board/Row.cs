@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace TicTacToeKata
+namespace TicTacToeKata.Board
 {
     public class Row : BoardLine
     {

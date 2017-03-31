@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
+using TicTacToeKata.Board;
+using TicTacToeKata.Exception;
 
-namespace TicTacToeKata.Test
+namespace TicTacToeKata.Test.UnitTests
 {
     [TestFixture]
     public class BoardShould
@@ -40,7 +42,7 @@ namespace TicTacToeKata.Test
         [SetUp]
         public void Setup()
         {
-            _board = new Board();
+            _board = new Board.Board();
         }
 
         [Test]
@@ -68,22 +70,6 @@ namespace TicTacToeKata.Test
 
             Assert.That(_board.GetValueFor(Field.MidCentre), Is.EqualTo(FieldValue.O));
         }
-
-        //        [Test]
-        //        public void set_field_for_player_X()
-        //        {
-        //            _board.SetPlayerField(Player.X, Field.TopLeft);
-        //
-        //            Assert.That(_board.GetValueFor(Field.TopLeft), Is.EqualTo(FieldValue.X));
-        //        }
-        //
-        //        [Test]
-        //        public void set_field_for_player_O()
-        //        {
-        //            _board.SetPlayerField(Player.O, Field.BottomRight);
-        //
-        //            Assert.That(_board.GetValueFor(Field.BottomRight), Is.EqualTo(FieldValue.O));
-        //        }
 
         [Test]
         public void throw_error_when_a_player_tries_to_set_a_field_already_taken()

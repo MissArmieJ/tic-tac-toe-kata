@@ -58,14 +58,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="BoardFieldsShould.cs" />
-    <Compile Include="BoardLayoutShould.cs" />
-    <Compile Include="BoardShould.cs" />
-    <Compile Include="ColumnShould.cs" />
-    <Compile Include="DiagonalShould.cs" />
+    <Compile Include="UnitTests\BoardFieldsShould.cs" />
+    <Compile Include="UnitTests\BoardLayoutShould.cs" />
+    <Compile Include="UnitTests\BoardShould.cs" />
+    <Compile Include="UnitTests\ColumnShould.cs" />
+    <Compile Include="UnitTests\DiagonalShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RowShould.cs" />
-    <Compile Include="TicTacToeGameShould.cs" />
+    <Compile Include="UnitTests\RowShould.cs" />
+    <Compile Include="UnitTests\TicTacToeGameShould.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using TicTacToeKata.Board;
 
-namespace TicTacToeKata
+namespace TicTacToeKata.Game
 {
     public class TicTacToeGame
     {
