@@ -50,6 +50,7 @@
     <Compile Include="FieldAlreadyTakenException.cs" />
     <Compile Include="FieldValue.cs" />
     <Compile Include="IBoard.cs" />
+    <Compile Include="IConsole.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Row.cs" />

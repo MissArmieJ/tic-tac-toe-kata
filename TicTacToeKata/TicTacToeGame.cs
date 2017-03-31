@@ -5,9 +5,11 @@ namespace TicTacToeKata
     public class TicTacToeGame
     {
         private readonly IBoard _board;
+        private readonly IConsole _console;
 
-        public TicTacToeGame(IBoard board)
+        public TicTacToeGame(IConsole console, IBoard board)
         {
+            this._console = console;
             this._board = board;
         }
 
@@ -27,7 +29,11 @@ namespace TicTacToeKata
 
         public void Play()
         {
-            
+            while (!IsOver())
+            {
+                var field = _console.GetField();
+                _board.Play(field);
+            }
         }
     }
 }
